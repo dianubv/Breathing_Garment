@@ -1,0 +1,18 @@
+show databases;
+create database breathing;
+use breathing;
+
+CREATE TABLE  user(id_user INTEGER  NOT NULL AUTO_INCREMENT,
+   name VARCHAR(30) NOT NULL,
+   first_name VARCHAR(30) NOT NULL,
+   PRIMARY KEY (id_user)
+); 
+
+CREATE TABLE  releve(id_user INTEGER  NOT NULL AUTO_INCREMENT,
+   date DATETIME NOT NULL,
+   donnee FLOAT  NOT NULL,
+   PRIMARY KEY (id_user)
+); 
+
+show tables;
+select * from releve;
