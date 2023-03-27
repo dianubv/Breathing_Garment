@@ -1,18 +1,17 @@
 show databases;
 create database breathing;
 use breathing;
-
-CREATE TABLE  user(id_user INTEGER  NOT NULL AUTO_INCREMENT,
-   name VARCHAR(30) NOT NULL,
+CREATE TABLE  users(id INTEGER  NOT NULL AUTO_INCREMENT,
    first_name VARCHAR(30) NOT NULL,
-   PRIMARY KEY (id_user)
+   name VARCHAR(30) NOT NULL,
+   birth_date DATE NOT NULL,
+   PRIMARY KEY (id)
 ); 
-
-CREATE TABLE  releve(id_user INTEGER  NOT NULL AUTO_INCREMENT,
-   date DATETIME NOT NULL,
-   donnee FLOAT  NOT NULL,
-   PRIMARY KEY (id_user)
-); 
+INSERT INTO users (name, first_name, birth_date, id) VALUES('nicolas', 'boyfriend', '2000-01-19', 1 ); 
+INSERT INTO users (name, first_name, birth_date, id) VALUES('diane', 'anus', '2001-01-03', 0); 
 
 show tables;
-select * from releve;
+select * from users;
+
+
+

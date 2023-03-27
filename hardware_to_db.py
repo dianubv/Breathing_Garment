@@ -1,46 +1,49 @@
+#This program allows to retrieve the data sent by the sensor and record it in a csv file
+
+# Import to read what the microcontroller sends
 import serial
 import time
 import datetime
 
+# Import for recording
 import pandas as pd
 import numpy as np
 
+# Import for user information (only the name + first name will be used)
+import info_user as iu
 
 
-# make sure the 'COM#' is set according the Windows Device Manager
-ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+
+ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1) # check that 'COM#' is the one that appears in the device manager
 time.sleep(2)
 
-print('Enter your name: ')
-name=input()
+name=iu.name + "_" + iu.fname
 
-data = []
+values = []
 time=[]
-table=[]
-for i in range(70):
-    line = ser.readline()   # read a byte string
-    if line:
-        string = line.decode()  # convert the byte string to a unicode string
-        num = int(string) # convert the unicode string to an int
+arr = np.array(["",[],[]])
+
+for i in range(iu.record):
+    line = ser.readline()                   # read a byte string
+    if line:    
+        string = line.decode()              # convert the byte string to a unicode string
+        num = int(string)                   # convert the unicode string to an int
         print(num)
-        data.append(num) # add int to data list
-        time.append(datetime.datetime.now())
+        values.append(num)                  # adds the read value to the values list
+        time.append(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))      # adds the time to the time list
 ser.close()
-table[0]=name
-table[1]=time
-table[2]=data
 
-arr = np.array(table) #pour que db comprenne table
+# Transform the lists into a numpy array
+arr[0] = name
+arr[1] = time
+arr[2] = values
 
-# transforme le tableau en dataframe (comprehensible par pandas)
-df = pd.DataFrame(arr)
+arr = np.array(arr) 
 
+# Transform the array into a dataframe (understandable by pandas)
+df = pd.DataFrame(arr) 
 
-# là on a table qui est un tableau de 2 tableaux, le premier contient le nom, le second le temps, le troisième les données
-
-# build the plot
-""" plt.plot(data)
-plt.xlabel('Time')
-plt.ylabel('Stretch sensor resistance')
-plt.title('Stretch sensor resistance by time')
-plt.show() """
+# Save the dataframe in a csv file in the "dataframes" folder (which is used to store all data)
+path = 'dataframes/'
+name= arr[0]+ "_" +time[0] +'.csv'
+df.to_csv(path+name)

@@ -1,0 +1,29 @@
+PROJET :
+
+
+donnée envoyée entre harware_to_db.py et database.py 
+    -> mieux vaut liste avec nom + liste time + list data 
+        ou numpy
+
+
+database.py :
+    -> bonne forme ? pas sure de la structure de la db 
+    enregistrer la db sur le pc ou dans le docker ??
+    rajouter une table avec les users  -> rajouter automatiquement le user dans la table grâce à database.py
+
+
+api.py :
+    sert à recup les données de la db 
+    utiliser uvicorn
+    -> comment la lier à la db ? 
+    + rajouter un "find_item" : chercher par nom d'utilisateur ## a écrire moi aussi 
+
+    api sert juste à les metadata 
+
+dataframe : juste les sauvegarder dans un dossier pour ça
+
+makefile pour si on écrit dans le terminal du docker make blabla, ça lance le script pour record les données 
+
+dans requirements mettre pandas etc ?? 
+
+    

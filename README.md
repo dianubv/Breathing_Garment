@@ -22,18 +22,7 @@ api.py :
 
 todo 
 debug hardware to read good value on esp32
-il est deja possible que le pont diviseur de tension resolve le probleme
-- possible problems
-    - courrant pas suffisant alors que arduino uno si
-        -    - envoyer plusieurs pins 5v a la sortie (plus de courrant)
 
-    - pont diviseur de tension mal fait
-
-
-savoir que la difference entre les deux main.cpp s est un lissage de la sortie, (on effectue une moyenne entre deux lectures du pin A0)
-
-il serait interessant de regarder la tension de sortie du ohmetre sur 20k (position lors du test reussi) 
-est ce proche du 5v de la arduino ou plus 
 
 <!--  -->
 A la fin de la creation du docker on execute api.py, 
