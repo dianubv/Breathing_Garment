@@ -21,16 +21,17 @@ To run this project, you must have the following installed on your system:
 To use this application, you will need to have Docker installed on your system.
 Installation
 
-    1. Clone this repository to your local machine.
-    2. Run `docker build -t <name> .` to build the Docker images.
-    3. Run `docker-compose up` to start the containers.
+    1. Clone this repository to your local machine. 
+    2. Run `mkdir ./harware/dataframes`  (because I don't push it on github)
+    3. Run `docker build -t <name> .` to build the Docker images.
+    4. Run `docker-compose up` to start the containers.
 
 ## Usage
 
 Once the Docker containers are running, you can use the following scripts to interact with the application:
 
-    - `run.sh` : to launch the data reccord. This program demands you to write your name, first name and birth date.
-    - `api.sh`: Provides an API to search for name in the database and CSV files.
+    - `run.sh`: to launch the data reccord. This program demands you to write your name, first name and birth date.
+    - `http://0.0.0.0:8000/hw` : in your browser, to test the API. If it is ok, change 'hw' by the name of an user.
 
 
 ## Files
