@@ -3,7 +3,8 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "/home/diane/.platformio/packages/framework-arduino-avr/cores/arduino/"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
