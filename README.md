@@ -22,7 +22,7 @@ To use this application, you will need to have Docker installed on your system.
 Installation
 
     1. Clone this repository to your local machine.
-    2. Run `docker-compose build` to build the Docker images.
+    2. Run `docker build -t dianus/apibrg .` to build the Docker images.
     3. Run `docker-compose up` to start the containers.
     
 ## Usage
