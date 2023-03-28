@@ -1,9 +1,10 @@
-FROM tiangolo/uvicorn-gunicorn
+FROM python:3
+FROM tiangolo/uvicorn-gunicorn-fastapi
+
 
 
 WORKDIR /app
 ADD requirements.txt .
-RUN pip3 install -r requirements.txt
+RUN pip3 install fastapi
 RUN pip3 install mysql-connector-python pandas
-ADD . . 
-#CMD uvicorn --host 0.0.0.0 api:app
+ADD . .

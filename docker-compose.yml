@@ -1,17 +1,20 @@
 version: "3.8"
+
 services:
-    database:
-        container_name: breathing
-        image : mysql
-        ports:
-            - "3306:3306"
-        environment:
-            MYSQL_ROOT_PASSWORD: brg
-    api:
-        container_name: api
-        image : dianus/apibrg
-        links:
-            - "database"
-        build: ./
-        ports:
-            - "5001:5000"
+  database:
+    container_name: breathing
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: brg
+
+  api:
+    container_name: api
+    image: dianus/apibrg
+    links:
+      - database
+    build: ./
+    ports:
+      - "5001:5000"
+    command: uvicorn --host 0.0.0.0 api:app
