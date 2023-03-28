@@ -8,6 +8,7 @@ services:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: brg
+      MYSQL_DATABASE: breathing
 
   api:
     container_name: api
@@ -15,6 +16,10 @@ services:
     links:
       - database
     build: ./
+    volumes: 
+      - ./:/app
     ports:
-      - "5001:5000"
-    #command: uvicorn --host 0.0.0.0 api:app
+      - "8000:8000"
+    devices: 
+      - "/dev/ttyACM0:/dev/ttyACM0"
+

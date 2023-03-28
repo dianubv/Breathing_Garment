@@ -4,12 +4,14 @@ import os
 import mysql.connector
 import pandas as pd
 
+import uvicorn
+
 from fastapi import FastAPI
 
 app = FastAPI()
 
 # Make a connection to the database
-conn = mysql.connector.connect(user='root', password='brg', host='localhost', database='breathing')
+conn = mysql.connector.connect(user='root', password='brg', host='breathing', database='breathing')
 
 # request for testing
 @app.get("/hw")
@@ -22,7 +24,7 @@ async def root(name: str):
     matching_files = find_name(name)                        # find all files that contain "name"
     results = {}
     for file_name in matching_files:                        # read all previous files and add them content in a dictionary
-        file_path = os.path.join('dataframes', file_name)
+        file_path = os.path.join('./hardware/dataframes', file_name)
         df = pd.read_csv(file_path)
         results[file_name] = df.to_dict(orient='records')   
     user_results = find_user(name)                          # find all users that contain "name" in the database
@@ -30,7 +32,7 @@ async def root(name: str):
 
 # Function to find all files that contain "name" in the CSV files
 def find_name(name: str):
-    dir_path = 'dataframes'
+    dir_path = './hardware/dataframes'
     csv_files = [f for f in os.listdir(dir_path) if f.endswith('.csv')]
     matching_files = []
     for file_name in csv_files:                            # check if "name" is in the file name
@@ -49,3 +51,5 @@ def find_user(name: str):
         user_results.append({"id": row[0], "name": row[1], "first_name": row[2], "birth_date": row[3]})
     cursor.close()
     return user_results                                        # return the list of dictionaries of users "name"
+
+

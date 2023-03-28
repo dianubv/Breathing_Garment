@@ -1,6 +1,6 @@
 
 
-docker run --device="/dev/ttyACM0"
+
 
 # Breathing Garment
 
@@ -22,9 +22,9 @@ To use this application, you will need to have Docker installed on your system.
 Installation
 
     1. Clone this repository to your local machine.
-    2. Run `docker build -t dianus/apibrg .` to build the Docker images.
+    2. Run `docker build -t <name> .` to build the Docker images.
     3. Run `docker-compose up` to start the containers.
-    
+
 ## Usage
 
 Once the Docker containers are running, you can use the following scripts to interact with the application:
@@ -43,5 +43,5 @@ The project includes the following files:
 - `info_user.py`: This program prompts the user for information and stores it in a MySQL database.
 - `run.sh`: This script launches `hardware_to_db.py` and `info_user.py` programs.
 - `api.py`: This program provides an API to search for data in the CSV files and the MySQL database.
-- `api.sh`: This scipt launches `api.py` program.
+
 
