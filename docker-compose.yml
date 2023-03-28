@@ -17,4 +17,4 @@ services:
     build: ./
     ports:
       - "5001:5000"
-    command: uvicorn --host 0.0.0.0 api:app
+    #command: uvicorn --host 0.0.0.0 api:app
